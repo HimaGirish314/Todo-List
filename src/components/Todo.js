@@ -9,7 +9,11 @@ const handleSubmit=(e)=>{
     setTodos([...todos,{id:todos.length+1,name:inputTodo}])
     setInputTodo('')
 }
-console.log(todos)
+const handleDelete=(data)=>{
+    setTodos(todos.filter((res)=>{
+    return res.id !== data.id
+ }))
+}
   return (
     <div className="container">
         <div className="inputData">
@@ -18,7 +22,7 @@ console.log(todos)
             <button type='submit'>Add</button>
             </form>
         </div>
-        <TodoList  todos={todos} setTodos={setTodos}/>
+        <TodoList  todos={todos} setTodos={setTodos} handleDelete={handleDelete}/>
     </div>
   )
 }
