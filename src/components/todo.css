@@ -1,0 +1,22 @@
+.container{
+    border: 2px solid rgb(230, 229, 229);
+    width: 30%;
+    margin: 0 auto;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+.inputData input{
+    height: 30px;
+    width: 70%;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+.inputData button{
+    padding: 10px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    border: none;
+}
+.inputData button:hover{
+   background-color: rgb(250, 100, 125);
+}
