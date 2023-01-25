@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import TodoList from './TodoList';
+import './todo.css'
 
 const Todo = () => {
     const initialState=JSON.parse(localStorage.getItem("todos")) || [];
@@ -11,7 +12,6 @@ const Todo = () => {
         localStorage.setItem("todos", JSON.stringify(todos))
     },[todos])
 
-    console.log(editTodo)
     const handleSubmit=(e)=>{
         e.preventDefault()
         if(todos.includes(editTodo)){
@@ -35,12 +35,15 @@ const Todo = () => {
         setEditTodo(data)
         setInputTodo(data.name)
     }
+    const handleInput=(e)=>{
+        setInputTodo(e.target.value)
+    }
     return (
         <div className="container">
             <div className="inputData">
                 <form onSubmit={handleSubmit}>
-                <input type="text" placeholder='Enter Here....' value={inputTodo} onChange={(e)=>{setInputTodo(e.target.value)}}/>
-                <button type='submit'>{editTodo ?"Update" :"Add"}</button>
+                <input type="text" placeholder='Enter Here....' value={inputTodo} onChange={handleInput}/>
+                <button disabled={inputTodo.length>0 ? false : true } type='submit'>{editTodo ?"Update" :"Add"}</button>
                 </form>
             </div>
             <TodoList  todos={todos} setTodos={setTodos} handleDelete={handleDelete} handleEdit={handleEdit}/>
